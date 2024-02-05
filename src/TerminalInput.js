@@ -1,9 +1,11 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 
-const TerminalInput = ({ directory, text, onChangeText, onSubmit }) => {
+const TerminalInput = ({ directory, text, onChangeText, onSubmit, lastCommand }) => {
   const handleKeyPress = (e) => {
     if (e.key === "Enter") {
       onSubmit();
+    } else if (e.key === "ArrowUp") {
+      onChangeText({ target: { value: lastCommand } });
     }
   };
 
@@ -14,6 +16,9 @@ const TerminalInput = ({ directory, text, onChangeText, onSubmit }) => {
         <span style={{ color: "#007aa5" }}>{directory}</span>$
       </span>
       <input
+        autoComplete="off"
+        autoCorrect="off"
+        autoFocus={true}
         onChange={onChangeText}
         value={text}
         style={styles.terminalInput}

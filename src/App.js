@@ -25,6 +25,7 @@ export const App = () => {
   const [easterEgg, setEasterEgg] = useState(0);
   const [text, setText] = useState("");
   const [directory, setDirectory] = useState("~");
+  const [lastCommand, setLastCommand] = useState("");
 
   const scrollToBottom = () => {
     if (lastMessageRef.current) {
@@ -34,6 +35,7 @@ export const App = () => {
 
   const submitText = () => {
     const command = text.trim();
+    setLastCommand(command);
     commandHandler(command, setData, setText, directory, setDirectory, easterEgg, setEasterEgg);
     setText("");
     scrollToBottom();
@@ -60,6 +62,7 @@ export const App = () => {
             onChangeText={(e) => setText(e.target.value)}
             onSubmit={submitText}
             directory={directory}
+            lastCommand={lastCommand}
           />
           <div ref={lastMessageRef}></div>
         </div>
