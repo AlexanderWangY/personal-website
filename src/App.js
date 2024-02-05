@@ -1,10 +1,13 @@
 import TerminalLine from "./TerminalLine";
 import TerminalInput from "./TerminalInput";
 import TerminalResponse from "./TerminalResponse";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { commandHandler } from "./actions/command";
+import "./App.css";
 
 export const App = () => {
+  const messagesRef = useRef(null);
+  const lastMessageRef = useRef(null);
   const [data, setData] = useState([
     {
       text: "Welcome to Alexander Wang's Portfolio Website!",
@@ -23,15 +26,27 @@ export const App = () => {
   const [text, setText] = useState("");
   const [directory, setDirectory] = useState("~");
 
+  const scrollToBottom = () => {
+    if (lastMessageRef.current) {
+      lastMessageRef.current.scrollIntoView();
+    }
+  };
+
   const submitText = () => {
     const command = text.trim();
     commandHandler(command, setData, setText, directory, setDirectory, easterEgg, setEasterEgg);
-
     setText("");
+    scrollToBottom();
   };
+
+  useEffect(() => {
+    scrollToBottom();
+  }, [data]);
+
+
   return (
     <div>
-      <div style={styles.mainContainer}>
+      <div style={styles.mainContainer} ref={messagesRef}>
         <div style={styles.contentContainer}>
           {data.map(({ text, type, directory }, index) =>
             type === "user" ? (
@@ -46,6 +61,7 @@ export const App = () => {
             onSubmit={submitText}
             directory={directory}
           />
+          <div ref={lastMessageRef}></div>
         </div>
       </div>
     </div>
