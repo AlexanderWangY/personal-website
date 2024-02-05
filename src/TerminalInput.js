@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const TerminalInput = ({ text, onChangeText, onSubmit }) => {
+const TerminalInput = ({ directory, text, onChangeText, onSubmit }) => {
   const handleKeyPress = (e) => {
     if (e.key === "Enter") {
       onSubmit();
@@ -10,8 +10,8 @@ const TerminalInput = ({ text, onChangeText, onSubmit }) => {
   return (
     <div style={styles.terminalLineContainer}>
       <span style={styles.terminalText}>
-        alexanderwang@alexander-Lenovo-YOGA-700:
-        <span style={{ color: "blue" }}>~</span>$
+        alexanderwang@alexander-Lenovo-YOGA-700: 
+        <span style={{ color: "#007aa5" }}>{directory}</span>$
       </span>
       <input
         onChange={onChangeText}

@@ -1,0 +1,9 @@
+Spotify Recommendation Script
+
+Authored by: Alexander Wang
+
+Description:
+A python script that utilizes the Spotify API through Spotipy to access a user's playlists. It uses statistical analysis of the user's preferences within
+their playlists to generate songs that it thinks the user would like.
+
+Github link: https://github.com/AlexanderWangY/SpotifyRecommender

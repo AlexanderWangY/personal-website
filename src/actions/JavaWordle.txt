@@ -1,0 +1,9 @@
+Wordle in Java
+
+Authored by: Alexander Wang
+
+Description:
+I remade the popular NYT online game Wordle in Java! This utilized the NYT word database to generate the words and also utilized terminal ANSI colors in order to guide the
+player to victory!
+
+Github link: https://github.com/AlexanderWangY/Wordle-In-JAVA

@@ -1,0 +1,11 @@
+Spotify Recommendation Script
+
+Authored by: Alexander Wang
+
+Description:
+A python script for calculating the distance matrix between all the class buildings on UF's campus. This came to approximately 10,000 different paths which was optimized to 5,000.
+The algorithim involved building a 2D Matrix by blocking 30 x 30 matrices together in order to build the entire database of distances.
+This is used inside the SwampScheduler website built by Robert Conde for class distance calculations for scheduling conflicts!
+
+Github link: https://github.com/AlexanderWangY/UF-GeoMatrix-Integration-Script
+SwampScheduler Github: https://github.com/ufosc/SwampScheduler

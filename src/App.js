@@ -2,8 +2,7 @@ import TerminalLine from "./TerminalLine";
 import TerminalInput from "./TerminalInput";
 import TerminalResponse from "./TerminalResponse";
 import { useState } from "react";
-
-const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+import { commandHandler } from "./actions/command";
 
 export const App = () => {
   const [data, setData] = useState([
@@ -12,40 +11,21 @@ export const App = () => {
       type: "response",
     },
     {
+      text: "I'm glad you're here! Take a look around using commands.",
+      type: "response",
+    },
+    {
       text: "Type 'help' for a list of commands.",
       type: "response",
     },
   ]);
+  const [easterEgg, setEasterEgg] = useState(0);
   const [text, setText] = useState("");
+  const [directory, setDirectory] = useState("~");
 
   const submitText = () => {
     const command = text.trim();
-    let response = [{ text: command, type: "user" }];
-    if (command === "clear") {
-      setData([]);
-      setText("");
-      return;
-    } else if (command === "help") {
-      response.push({
-        text: "ALEX bash, version 0.0.1(1)-release (x86_64-pc-linux-gnu)\n\nThese shell commands are defined internally.  Type `help' to see this list.\nType 'help {name}' to find out more about that command.\n\nhelp\nclear\ngit\nlinkedin\ncontact",
-        type: "response",
-      });
-    } else if (command === "git") {
-      response.push({
-        text: "Redirecting to my GitHub...",
-        type: "response",
-      });
-    } else {
-      response.push({ text: "Command not found", type: "response" });
-    }
-
-    setData((prevData) => [...prevData, ...response]);
-
-    if (command === "git") {
-      sleep(1000).then(() => {
-        window.open("https://github.com/AlexanderWangY", "_blank");
-      });
-    }
+    commandHandler(command, setData, setText, directory, setDirectory, easterEgg, setEasterEgg);
 
     setText("");
   };
@@ -53,9 +33,9 @@ export const App = () => {
     <div>
       <div style={styles.mainContainer}>
         <div style={styles.contentContainer}>
-          {data.map(({ text, type }, index) =>
+          {data.map(({ text, type, directory }, index) =>
             type === "user" ? (
-              <TerminalLine key={index} text={text} />
+              <TerminalLine key={index} text={text} directory={directory} />
             ) : (
               <TerminalResponse key={index} text={text} />
             )
@@ -64,6 +44,7 @@ export const App = () => {
             text={text}
             onChangeText={(e) => setText(e.target.value)}
             onSubmit={submitText}
+            directory={directory}
           />
         </div>
       </div>

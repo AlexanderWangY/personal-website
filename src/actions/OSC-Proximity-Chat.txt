@@ -1,0 +1,10 @@
+OSC Proximity Chat App Project
+
+Authored by: Alexander Wang, Pheonix Guttierez, Cameron
+
+Description:
+A mobile app built in React Native that allows users within a certain range to communicate with each other in the form of a chat app.
+This app utilizes geolocation data as well as a robust geohash algorithim to filter through users and messages in the server which is built in ExpressJS and Node.js + Socket.io.
+We use realtime Firebase at the database for this application
+
+Github link: https://github.com/ufosc/OSC-Proximity-Chat-App

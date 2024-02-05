@@ -1,0 +1,9 @@
+MechEnvision Website
+
+Authored by: Alexander Wang, Hugo Liu, Joseph Molina, Soor, and Lucja
+
+Description:
+MechEnvision is a ChatGPT powered website made for generating engineering projects. Made for 2023 Verizon UF Hackathon.
+It is built using React and ExpressJS. Its backend is deployed on AWS EC2 and it communicates with the GPT-3.5 Turbo LLM to generate results.
+
+Github link: https://github.com/AlexanderWangY/MechEnvision

@@ -1,9 +1,9 @@
-export const TerminalLine = ({ text }) => {
+export const TerminalLine = ({ text, directory }) => {
   return (
     <div style={styles.terminalLineContainer}>
       <span style={styles.terminalText}>
         alexanderwang@alexander-Lenovo-YOGA-700:
-        <span style={{ color: "blue" }}>~</span>$
+        <span style={{ color: "#007aa5" }}>{directory}</span>$
       </span>
       <span style={styles.terminalTypedText}>{String(text)}</span>
     </div>
